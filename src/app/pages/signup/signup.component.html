@@ -1,0 +1,53 @@
+<div class="container">
+    <!--making row center-->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!--mt(margin from top) mb(botton) p(padding)-->
+            <div class="card mt-3 mb-3 shadow-lg p-3">
+                <h2 style="text-align:center"><b style="color:#3F729B">Sign up</b></h2>
+                <hr>
+                <!--   <div class="alert alert-success" role="alert">
+                    Account has been created.. <a routerLink="../login" class="text-danger">Login here</a>
+                </div>-->
+                <div [ngClass]="getname()" role="alert">
+                    {{ message }}
+                </div>
+
+                <form [formGroup]="form" class="text-left">
+                    <div class="form-group">
+                        <label><i class="bi bi-incognito"></i><b style="padding-left:5px">Username</b></label>
+                        <input type="text" class="form-control" formControlName="username" placeholder="Nanneboina" style="width: 300px" [ngClass]="{'is-invalid':form.get('username')?.touched && form.get('username')?.invalid}" required/>
+                        <div class="invalid-feedback">
+                            <div>Username is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="bi bi-envelope-fill"></i><b style="padding-left:5px">Email</b></label>
+                        <input type="text" class="form-control" formControlName="email" placeholder="Nanneboina@gmail.com" style="width: 300px" [ngClass]="{'is-invalid':form.get('email')?.touched && form.get('email')?.invalid}" />
+                        <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="invalid-feedback">
+                            <div *ngIf="form.hasError('required','email')">Email is required</div>
+                            <div *ngIf="form.hasError('email','email')">Enter valid email</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="bi bi-shield-lock-fill"></i><b style="padding-left:5px">Password</b></label>
+                        <input type="password" class="form-control" formControlName="password" placeholder="***************" style="width: 300px" [ngClass]="{'is-invalid':form.get('password')?.touched && form.get('password')?.invalid}" />
+                        <div class="invalid-feedback">
+                            <div>Password is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="one">
+                        <input type="submit" class="btn btn-primary mt-3 btn-block" style="width: 100px" [disabled]="!form.valid" (click)="signup()" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-danger mt-3 btn-block" style="width: 100px" value="clear" (click)="clear()">
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

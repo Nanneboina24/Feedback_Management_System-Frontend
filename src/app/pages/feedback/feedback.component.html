@@ -1,0 +1,54 @@
+<div class="container">
+    <!--making row center-->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!--mt(margin from top) mb(botton) p(padding)-->
+            <div class="card mt-3 mb-1 shadow-lg p-2">
+                <h2 style="text-align:center"><b style="color:#3F729B">Feedback</b></h2>
+                <hr>
+
+                <form [formGroup]="form" class="text-left">
+                    <div class="form-group">
+                        <label><i class="bi bi-incognito"></i><b style="padding-left:5px">Username</b>
+                      <input type="text" class="form-control" formControlName="username" style="width: 300px"  ></label>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="bi bi-envelope-fill"></i><b style="padding-left:5px">Email</b>
+                        <input type="text" class="form-control" formControlName="email" style="width: 300px" ></label>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="bi bi-bank2"></i><b style="padding-left:5px">Department</b></label><br>
+                        <label><input type="radio"  formControlName="department" value="CSE" >CSE</label><span style="padding-left:20px"></span>
+                        <label><input type="radio"  formControlName="department" value="ECE" >ECE</label><span style="padding-left:20px"></span>
+                        <label><input type="radio"  formControlName="department" value="EEE" >EEE</label><span style="padding-left:20px"></span>
+                        <label><input type="radio"  formControlName="department" value="CIVIL">CIVIL</label><span style="padding-left:20px"></span>
+                        <label><input type="radio"  formControlName="department" value="MECH" >MECH</label>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="bi bi-mortarboard-fill"></i><b style="padding-left:5px">Year</b></label> <br>
+                        <label><input type="radio"  formControlName="year" value="1" ><span>1 year</span></label><span style="padding-left:20px"></span>
+                        <label><input type="radio"  formControlName="year" value="2" ><span>2 year</span></label><span style="padding-left:20px"></span>
+                        <label><input type="radio"  formControlName="year" value="3" ><span>3 year</span></label><span style="padding-left:20px"></span>
+                        <label><input type="radio"  formControlName="year" value="4" ><span>4 year</span></label><span style="padding-left:20px"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label><i class="bi bi-telegram"></i><b style="padding-left:5px">Enter Feedback</b>
+                    <input type="text" class="form-control" formControlName="fbdata" style="width: 300px" ></label>
+                    </div>
+
+                    <div class="form-group" id="one">
+                        <input type="submit" class="btn btn-primary mt-3 btn-block" style="width: 100px" (click)="fsubmit()">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-danger mt-3 btn-block" style="width: 100px" value="Back" (click)="fback()">
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

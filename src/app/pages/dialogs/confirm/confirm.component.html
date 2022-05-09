@@ -1,0 +1,15 @@
+<div class="header">
+    <h2>Feedback Already Registered!</h2>
+    <button mat-icon-button [mat-dialog-close]="false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div mat-dialog-content>
+    Are you want to download response ?
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="dialogyes()">Yes</button>
+    <button mat-raised-button color="danger" [mat-dialog-close]="false" (click)="dialogno()">No</button>
+</div>

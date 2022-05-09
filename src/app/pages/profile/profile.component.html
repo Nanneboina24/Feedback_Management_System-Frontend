@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-3 mb-3 shadow-lg p-3">
+                <h2 style="text-align:center"><b style="color:#3F729B">Profile</b></h2>
+                <hr>
+                <h3><b>{{ msg }}</b></h3>
+                <h2 style="text-align:center"><b>Welcome  {{ this.data.username}}..</b></h2><br><br>
+                <div id="outer">
+                    <div class="inner"> <button class="btn btn-outline-primary" style="width: 100px" (click)="fbackin()">Feedback</button></div>
+                    <span style="padding-left:300px"></span>
+                    <div class="inner"> <button class="btn btn-outline-danger" style="width: 100px" (click)="logout()">Logout</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--navigating one page to another page
+  <button class="btn btn-outline-danger" routerLink="../login"></button>-->
