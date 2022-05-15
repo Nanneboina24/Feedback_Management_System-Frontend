@@ -10,5 +10,5 @@ BACKEND	  :	MONGODB<br/>
 FRAMEWORK : MEAN<br/>
 IDE       : VS CODE<br/>
 
-# Develop by..,
+# Develop by..
 Nanneboina Sumanth
