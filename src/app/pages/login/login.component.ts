@@ -25,16 +25,28 @@ export class LoginComponent implements OnInit {
 
   login(){
     const data = this.form.value;
-    this.auth.login(data).subscribe(
-      (res) => {
-           localStorage.setItem('token',res.token);
-           alert(res.message);
-           this.router.navigate(['/profile']);
-      },
-      (err) => {
-        alert(err.message);
-      }
-    )
+    const aemail=data.email;
+    const apass = data.password;
+    if(aemail==="admin@gmail.com" && apass=== "admin123")
+    {
+       this.auth.setadmin("admin");
+       //console.log(this.auth.getadmin());
+       alert("Admin Sucessfully Logged!");
+       this.router.navigate(['/profile']);
+    }
+    else{
+      this.auth.login(data).subscribe(
+        (res) => {
+             localStorage.setItem('token',res.token);
+             alert(res.message);
+             this.router.navigate(['/profile']);
+        },
+        (err) => {
+          alert(err.message);
+        }
+      )
+    }
+
 
   }
 

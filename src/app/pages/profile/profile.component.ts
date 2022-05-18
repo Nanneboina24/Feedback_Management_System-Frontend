@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service' ;
 import { Router } from '@angular/router';
-import { jsPDF } from 'jspdf' ;
-import  autoTable  from 'jspdf-autotable';
 
 @Component({
   selector: 'app-profile',
@@ -14,13 +12,21 @@ export class ProfileComponent implements OnInit {
   dres:any;
   msg:any;
   value:any;
+  admin:any;
   constructor( private auth: AuthService,private router: Router) {
     // this.datas=this.auth.getdata();
     // console.log(this.datas);
    }
 
   ngOnInit(): void {
-    this.getprofile();
+    this.admin = this.auth.getadmin();
+    if(this.admin !== "admin")
+    {
+       this.getprofile();
+    }
+    else{
+      this.msg="Welcome Admin..";
+    }
 
   }
 
@@ -30,7 +36,7 @@ export class ProfileComponent implements OnInit {
             if(res.success)
             {
               this.data = res.data;
-            //  this.auth.setdata(this.data);
+              this.msg="Welcome "+this.data.username;
 
             }
             else{
@@ -49,18 +55,40 @@ export class ProfileComponent implements OnInit {
   }
 
   fbackin(){
+    if(this.admin === "admin"){
+      this.auth.fbackadmin().subscribe(
+        (res) => {
+          if(res.success)
+          {
+             alert(res.message);
+             this.dres = res.data;
+             //console.log(this.dres.length);
+              this.auth.setdata(this.dres);
+              this.auth.confirmDialog();
+          }
+          else{
+              alert(res.message);
+          }
+       },
+      (err) => {
+       alert(err.message);
+       }
+
+      );
+    }
+    else{
     const edata = this.data;
     this.auth.fbackcheck(edata).subscribe(
       (res) => {
-          if(res.success)                                    //  alert("User Added Sucessfully in Db");
+          if(res.success)
           {
              alert(res.message);
              this.router.navigate(['/fback']);
           }
           else{
-             // alert(res.message);
+              alert(res.message);
               this.dres = res.data;
-              this.auth.setdata(this.dres)
+              this.auth.setdata(this.dres);
              // console.log(this.dres[0].username);
              // this.makepdf();
               this.auth.confirmDialog();
@@ -76,10 +104,13 @@ export class ProfileComponent implements OnInit {
        alert(err.message);
        }
     );
+
+    }
   }
 
   logout() {
      localStorage.clear()
+     this.auth.setadmin("");
      this.router.navigate(['/login']);
   }
 

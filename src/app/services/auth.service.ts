@@ -34,6 +34,10 @@ export class AuthService {
       return this.http.post("http://localhost:3000/auth/fbcheck",data);
     }
 
+  fbackadmin(): Observable<any> {
+      return this.http.get("http://localhost:3000/auth/fbadmin");
+    }
+
 
 
 
@@ -46,6 +50,17 @@ export class AuthService {
     {
       return this.value;
     }
+
+    adminval:any;
+    setadmin(data:any)
+    {
+      this.adminval=data;
+    }
+    getadmin()
+    {
+       return this.adminval;
+    }
+
 
     confirmDialog(){
       this.dialog.open(ConfirmComponent);
